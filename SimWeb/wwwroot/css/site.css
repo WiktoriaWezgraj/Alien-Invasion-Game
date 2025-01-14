@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #e1e8f0; /* Jasny, przyt³umiony niebieski */
+    color: #4f4f9a; /* Subtelny, przyt³umiony fiolet */
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Nag³ówek */
+header {
+    background: #5f4b8b; /* Ciemny fioletowy z odcieniem niebieskiego */
+    color: #d6c9f4; /* Jasny, przyt³umiony fiolet */
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.25rem;
+}
+
+    header a {
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+    }
+
+        header a:hover {
+            color: #b0a1d3; /* Przyt³umiony fiolet na hover */
+        }
+
+        header a:active {
+            color: #8f7cbf; /* Ciemniejszy fiolet na aktywacjê */
+        }
+
+/* Siatka */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+    background: #f0f3f7; /* Subtelny, bardzo jasny niebieski */
+    margin: 2rem auto;
+    width: 50vw;
+    height: auto;
+    border: 2px solid #7e6e9e; /* Przyt³umiony fioletowy bord */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.grid-item {
+    background: #d1cce5; /* Jasny fiolet z szarym odcieniem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s;
+    aspect-ratio: 1 / 1;
+}
+
+    .grid-item:hover {
+        background: #a5a1c9; /* Przyt³umiony fiolet z odrobin¹ niebieskiego */
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+/* Obrazki */
+img {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Przycisk */
+button {
+    margin: 10px;
+    padding: 0.5rem 1rem;
+    background: #7f65a4; /* Fioletowo-niebieski przycisk */
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    button:hover {
+        background: #6b4f87; /* Przyt³umiony fioletowy na hover */
+    }
+
+    button:active {
+        background: #5f4370; /* Ciemniejszy fioletowy na aktywacjê */
+    }
+
+/* G³ówna sekcja */
+main {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #b0a1d3; /* Przyt³umiony fioletowy na hover */
+    }
+
+    a:active {
+        color: #8f7cbf; /* Ciemniejszy fioletowy na aktywacjê */
+    }

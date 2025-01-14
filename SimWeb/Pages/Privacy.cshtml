@@ -1,0 +1,12 @@
+﻿@page
+@model PrivacyModel
+<h1>Symulator</h1>
+<p>Tura: @Model.Turn</p>
+<form asp-page="/Privacy" method="post">
+    <button name="turnchange" value="prev">Poprzednia tura</button>
+    <button name="turnchange" value="next">Kolejna tura</button>
+</form>
+<div class="grid-container">
+    @Html.Raw(Model.GridHTML)
+</div>
+<p>@Model.Info</p>
