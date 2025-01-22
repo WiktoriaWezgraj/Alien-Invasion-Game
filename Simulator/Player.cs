@@ -6,42 +6,34 @@ namespace Simulator;
 public class Player : Creature
 {
     
-    public int _hp = 0;
-    public int HP
+    public int _points = 0;
+    public int Points
     {
-        get => _hp;
-        init => _hp = Validator.Limiter(value, 0, 10);
+        get => _points;
+        init => _points = Validator.Limiter(value, 0, 10);
     }
-    [JsonIgnore]
-    public override int Power => 8 * Level + 2 * HP;
 
-    [JsonIgnore]
-    public override string Info => $"{Name} [{Level}][{HP}]";
+    public override string Info => $"{Name} [{Level}][{Points}]";
 
-    [JsonIgnore]
     public override char Symbol => 'P';
 
     private int moveCount = 0;
 
     public Player() : base() { }
 
-    public Player(string name, int level= 1, int hp=0) : base(name, level)
+    public Player(string name, int level= 1, int points=0) : base(name, level)
     {
         moveCount = 0;
-        HP = hp;
+        Points = points;
     }
 
-    public void Move()
+    public void AddPoints(int points)
     {
-        moveCount++;
-
-        if (moveCount % 3 == 0 && _hp < 10)
-        {
-            _hp++;
-            moveCount = 0;
-        }
+        _points += points;
     }
 
-    public override string Greeting() => $"Hi, I'm {Name}, my level is {Level}, my HP is {HP}.";
-
+    //div w cshtml
+    //to do modelu strony .cs
+    //interfejs w cshtml
+    public override string Greeting() => $"Hi, I'm {Name}, my level is {Level}, my points is {Points}.";
 }

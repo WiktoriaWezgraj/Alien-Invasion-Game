@@ -12,11 +12,8 @@ public class Ufo : Creature
         init => _rage = Validator.Limiter(value, 0, 10);
     }
 
-    [JsonIgnore]
-    public override int Power => 7 * Level + 3 * Rage;
-    [JsonIgnore]
     public override string Info => $"{Name} [{Level}][{Rage}]";
-    [JsonIgnore]
+
     public override char Symbol => 'U';
 
     private int huntCount = 0;

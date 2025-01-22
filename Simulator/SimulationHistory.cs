@@ -4,6 +4,7 @@ namespace Simulator;
 
 public class SimulationHistory
 {
+    public Player? Player { get; private set; }
     public Simulation _simulation { get; }
     public int SizeX { get; }
     public int SizeY { get; }
@@ -12,6 +13,7 @@ public class SimulationHistory
 
     public SimulationHistory(Simulation simulation)
     {
+        Player = simulation.Mappables.OfType<Player>().FirstOrDefault();
         _simulation = simulation ??
             throw new ArgumentNullException(nameof(simulation));
         SizeX = _simulation.Map.SizeX;

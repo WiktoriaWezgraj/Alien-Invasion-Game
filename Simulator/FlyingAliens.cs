@@ -17,7 +17,8 @@ public class FlyingAliens : Aliens
     }
 
     protected override Point GetNewPosition(Direction direction) => FastFlying
-            ? Map.Next(Map.Next(Position, direction), direction)
-            : Map.NextDiagonal(Position, direction);
+    ? Map.Next(Map.Next(Position, direction), direction)
+    : Map.Next(Map.Next(Position, direction), direction);
+
 
 }

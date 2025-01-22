@@ -1,6 +1,18 @@
 ﻿@page
 @model IndexModel
-<h1>Aplikacja demonstracyjna Sim Web</h1><br>
-<p>Wizualizacja symulacji z wykorzystaniem programowania obiektowego w C# i Razor Pages.</p><br><br>
-<img src="css/Main.jpg" alt="WoW"/>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<h1 class="page-title">Alien's Attack</h1>
+<p>Wizualizacja symulacji z wykorzystaniem programowania obiektowego w C# i Razor Pages.</p>
 
+<div class="intro-container">
+    <h2>Wprowadź ruchy do symulacji</h2>
+    <form asp-page="/Privacy" method="post">
+        <div>
+            <label for="userMoves">Wprowadź 20 znakową sekwencję ruchów (np. ddddddddddddddddddlr):</label>
+            <input type="text" id="userMoves" name="userMoves" placeholder="Wpisz ruchy" />
+        </div>
+        <div>
+            <button class="start-button" type="submit" name="turnchange" value="start">Uruchom symulację</button>
+        </div>
+    </form>
+</div>

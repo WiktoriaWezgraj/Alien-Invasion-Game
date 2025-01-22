@@ -2,18 +2,32 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Simulator.Maps;
 using Simulator;
+using Microsoft.AspNetCore.Http;
+using System.Numerics;
+using System.Net.WebSockets;
 namespace SimWeb.Pages
 {
+    //kazde nacisniecie strzalki jako posta
+    //w interfejsie 4 przyciski i klawiature dopinamy do guzikow
+    //przerobic klasy po orkach i animalsach, dodac punkty do playera i zeby wyswietlaly się na stronie
     public class PrivacyModel : PageModel
     {
-        public SimulationHistory GenerateSimulationHistory()
+        public string? GreetingMessage { get; private set; }
+        public string UserMoves { get; private set; } = "";
+
+        public SimulationHistory GenerateSimulationHistory(string moves)
         {
+            if (string.IsNullOrWhiteSpace(moves))
+            {
+                moves = "dlrludluddlrulrdlurl"; // Ustaw domyślne ruchy
+            }
+
             Map map = new BigBounceMap(8, 6);
 
             // Lista obiektów poruszających się po mapie
             List<IMappable> creatures = new()
             {
-                new Player("You"),
+                new Player("Ryland Grace") {Points = 0},
                 new Ufo("Strangers"),
                 new Aliens {Description = "X Æ A-Xii", Size = 1},
                 new Aliens {Description = "Exa Dark Sideræl", Size = 2},
@@ -41,7 +55,7 @@ namespace SimWeb.Pages
             };
 
             // Ciąg ruchów
-            string moves = "dlrludluddlrulrdlurl";
+            //string moves = "dlrludluddlrulrdlurl";
 
             Simulation sim = new(map, creatures, positions, moves);
             return new SimulationHistory(sim);
@@ -78,23 +92,34 @@ namespace SimWeb.Pages
         public int Turn { get; private set; }
         public string Info { get; private set; } = "";
 
-        public void OnGet()
-        {
-            // Pobierz obecny numer tury z sesji
-            Turn = HttpContext.Session.GetInt32("Turn") ?? 0;
-            SimHistory = GenerateSimulationHistory();
 
-            // Generuj HTML siatki
+        public void OnGet()
+        { 
+        
+            UserMoves = HttpContext.Session.GetString("Moves") ?? "dlrludluddlrulrdlurl";
+            Turn = HttpContext.Session.GetInt32("Turn") ?? 0;
+
+            SimHistory = GenerateSimulationHistory(UserMoves);
+
             GridHTML = GenerateGridHTML(SimHistory, Turn);
-            HttpContext.Session.SetString("grid", GridHTML);
         }
 
         public void OnPost()
         {
-            // Pobierz obecny numer tury z sesji
+
+            string? movesInput = Request.Form["userMoves"];
+            if (!string.IsNullOrWhiteSpace(movesInput))
+            {
+                UserMoves = movesInput;
+                HttpContext.Session.SetString("Moves", UserMoves);
+            }
+            else
+            {
+                UserMoves = HttpContext.Session.GetString("Moves") ?? "dlrludluddlrulrdlurl";
+            }
+
             Turn = HttpContext.Session.GetInt32("Turn") ?? 0;
 
-            // Zmiana tury na podstawie akcji użytkownika
             string action = Request.Form["turnchange"];
             Turn = action switch
             {
@@ -105,9 +130,8 @@ namespace SimWeb.Pages
 
             HttpContext.Session.SetInt32("Turn", Turn);
 
-            SimHistory = GenerateSimulationHistory();
+            SimHistory = GenerateSimulationHistory(UserMoves);
             GridHTML = GenerateGridHTML(SimHistory, Turn);
         }
     }
 }
-

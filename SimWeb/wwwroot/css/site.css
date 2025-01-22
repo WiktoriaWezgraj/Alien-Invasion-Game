@@ -1,128 +1,127 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #e1e8f0; /* Jasny, przyt³umiony niebieski */
-    color: #4f4f9a; /* Subtelny, przyt³umiony fiolet */
-    min-height: 100vh;
     margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #001848, #002d6d, #004aad);
+    color: #ffffff;
 }
 
-/* Nag³ówek */
-header {
-    background: #5f4b8b; /* Ciemny fioletowy z odcieniem niebieskiego */
-    color: #d6c9f4; /* Jasny, przyt³umiony fiolet */
+.header {
+    background: #00122b;
+    color: #ffffff;
+    padding: 20px 0;
     text-align: center;
-    padding: 1rem;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 1.25rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-    header a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 15px;
-        font-weight: bold;
+.logo {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 0;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 20px #00f0f0;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+    .nav-menu li {
+        display: inline;
     }
 
-        header a:hover {
-            color: #b0a1d3; /* Przyt³umiony fiolet na hover */
+    .nav-menu a {
+        text-decoration: none;
+        color: #00ffff;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+    }
+
+        .nav-menu a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffffff;
         }
 
-        header a:active {
-            color: #8f7cbf; /* Ciemniejszy fiolet na aktywacjê */
-        }
+.main-content {
+    padding: 20px;
+    background: rgba(0, 0, 64, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-/* Siatka */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #00122b;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 5px;
-    background: #f0f3f7; /* Subtelny, bardzo jasny niebieski */
-    margin: 2rem auto;
-    width: 50vw;
-    height: auto;
-    border: 2px solid #7e6e9e; /* Przyt³umiony fioletowy bord */
-    border-radius: 10px;
+    grid-template-columns: repeat(8, 60px); 
+    grid-gap: 5px; 
+    margin: 20px auto;
     padding: 10px;
-}
-
-.grid-item {
-    background: #d1cce5; /* Jasny fiolet z szarym odcieniem */
-    display: flex;
-    align-items: center;
+    background: rgba(0, 0, 50, 0.8);
+    border-radius: 8px;
     justify-content: center;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: transform 0.3s, background 0.3s;
-    aspect-ratio: 1 / 1;
 }
 
-    .grid-item:hover {
-        background: #a5a1c9; /* Przyt³umiony fiolet z odrobin¹ niebieskiego */
-        transform: scale(1.05);
-        cursor: pointer;
+    .grid-container img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: 5px; 
+        border: 1px solid #004aad;
     }
 
-/* Obrazki */
-img {
-    width: 90%;
-    height: auto;
-    object-fit: contain;
+.grid-item {
+    width: 60px; 
+    height: 60px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    background: #00122b; 
+    border-radius: 5px;
 }
 
-/* Przycisk */
+
 button {
-    margin: 10px;
-    padding: 0.5rem 1rem;
-    background: #7f65a4; /* Fioletowo-niebieski przycisk */
+    background: #003366;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
-    color: #ffffff;
+    padding: 10px 20px;
     font-size: 1rem;
-    font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
 }
 
     button:hover {
-        background: #6b4f87; /* Przyt³umiony fioletowy na hover */
+        background: #004aad;
     }
 
-    button:active {
-        background: #5f4370; /* Ciemniejszy fioletowy na aktywacjê */
-    }
-
-/* G³ówna sekcja */
-main {
-    text-align: center;
-    padding: 2rem;
-    width: 100%;
-}
-
-a {
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #004aad;
+    border-radius: 5px;
+    background: rgba(0, 0, 64, 0.9);
     color: #ffffff;
-    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-    a:hover {
-        color: #b0a1d3; /* Przyt³umiony fioletowy na hover */
-    }
+label {
+    font-size: 1.1rem;
+    color: #00ffff;
+}
 
-    a:active {
-        color: #8f7cbf; /* Ciemniejszy fioletowy na aktywacjê */
-    }
+h1 {
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00e0e0;
+}

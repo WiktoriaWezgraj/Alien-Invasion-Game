@@ -25,7 +25,6 @@ public abstract class Creature : IMappable
     }
 
     public abstract string Info { get; }
-    public abstract int Power { get; }
 
     public Creature(string name, int level = 1)
     {

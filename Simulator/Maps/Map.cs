@@ -7,7 +7,7 @@ public abstract class Map
     private readonly Dictionary<Point, List<IMappable>> _fields;
     private readonly Rectangle _map;
 
-    protected Func<Map, Point, Direction, Point>? FNext, FNextDiagonal; //z zewnatrz nam nie popsują
+    protected Func<Map, Point, Direction, Point>? FNext; //z zewnatrz nam nie popsują
 
     public int SizeX { get; }
     public int SizeY { get; }
@@ -56,7 +56,6 @@ public abstract class Map
     public virtual List<IMappable>? At(int x, int y) => At(new Point(x, y));
 
     public Point Next(Point p, Direction d) => FNext?.Invoke(this, p, d) ?? p;
-    public Point NextDiagonal(Point p, Direction d) => FNextDiagonal?.Invoke(this, p, d) ?? p;
 
     public virtual void Move(IMappable mappable, Point from, Point to)
     {
