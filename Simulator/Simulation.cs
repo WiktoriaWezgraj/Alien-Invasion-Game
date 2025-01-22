@@ -57,12 +57,15 @@ public class Simulation
     {
         get
         {
+            if (string.IsNullOrEmpty(Moves)) return string.Empty;
+
             var direction = DirectionParser.Parse(Moves[currentMappableIndex % Moves.Length].ToString());
             if (direction.Any()) return direction[0].ToString().ToLower();
 
             return string.Empty;
         }
     }
+
 
     private HashSet<char> validMove = new HashSet<char> { 'l', 'r', 'u', 'd' };
     private string ValidateMoves(string moves) => new(moves.Where(c => validMove.Contains(Char.ToLower(c))).ToArray());
@@ -74,26 +77,26 @@ public class Simulation
     /// if number of mappables differs from 
     /// number of starting positions.
     /// </summary>
-    public Simulation(Map map, List<IMappable> mappables,
-        List<Point> positions, string moves)
+    public Simulation(Map map, List<IMappable> mappables, List<Point> positions, string moves)
     {
         if (mappables == null || mappables.Count == 0)
             throw new ArgumentException("IMappables list cannot be empty.");
         if (positions == null || positions.Count != mappables.Count)
             throw new ArgumentException("Number of positions must match number of mappables.");
-        if (string.IsNullOrWhiteSpace(moves))
-            throw new ArgumentException("Moves cannot be null or empty.");
 
         Map = map ?? throw new ArgumentNullException(nameof(map));
         Mappables = mappables;
         Positions = positions;
-        Moves = ValidateMoves(moves);
+
+        // Zapewnienie, że Moves nie jest puste
+        Moves = string.IsNullOrEmpty(moves) ? "lrud" : ValidateMoves(moves);
 
         for (int i = 0; i < mappables.Count; i++)
         {
             Mappables[i].InitMapAndPosition(Map, Positions[i]);
         }
     }
+
 
     /// <summary>
     /// Makes one move of current mappable in current direction.
@@ -106,11 +109,17 @@ public class Simulation
             throw new InvalidOperationException("Simulation is already finished.");
         }
 
+        if (string.IsNullOrEmpty(Moves))
+        {
+            throw new InvalidOperationException("No moves available for simulation.");
+        }
+
         var direction = DirectionParser.Parse(Moves[currentMappableIndex % Moves.Length].ToString())[0];
         CurrentMappable.Go(direction);
 
         currentMappableIndex++;
         if (currentMappableIndex >= Moves.Length) Finished = true;
     }
+
 }
 

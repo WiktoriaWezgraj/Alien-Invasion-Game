@@ -35,5 +35,5 @@ public class Player : Creature
     //div w cshtml
     //to do modelu strony .cs
     //interfejs w cshtml
-    public override string Greeting() => $"Hi, I'm {Name}, my level is {Level}, my points is {Points}.";
+    public override string Greeting() => $"Hi, I'm {Name}.";
 }

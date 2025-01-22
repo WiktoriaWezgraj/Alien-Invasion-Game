@@ -1,18 +1,20 @@
 ﻿@page
 @model IndexModel
+
 <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<h1 class="page-title">Alien's Attack</h1>
-<p>Wizualizacja symulacji z wykorzystaniem programowania obiektowego w C# i Razor Pages.</p>
 
 <div class="intro-container">
-    <h2>Wprowadź ruchy do symulacji</h2>
-    <form asp-page="/Privacy" method="post">
-        <div>
-            <label for="userMoves">Wprowadź 20 znakową sekwencję ruchów (np. ddddddddddddddddddlr):</label>
-            <input type="text" id="userMoves" name="userMoves" placeholder="Wpisz ruchy" />
-        </div>
-        <div>
+    <div class="text-content">
+        <h1>Przygotuj się na inwazję kosmitów!</h1>
+        <h1>W tej symulacji możesz przejąć kontrolę nad kosmitami, którzy odwiedzili ziemię.</h1>
+        <p>Wizualizacja symulacji z wykorzystaniem programowania obiektowego w C# i Razor Pages.</p>
+        <p>Mapa typu bounce.</p>
+        <form asp-page="/Privacy" method="post">
             <button class="start-button" type="submit" name="turnchange" value="start">Uruchom symulację</button>
-        </div>
-    </form>
+        </form>
+    </div>
+    <img src="~/css/X.png" alt="Alien Invasion" class="intro-image" width="500" height="500" />
 </div>
+
+
+

@@ -2,35 +2,37 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace SimWeb.Pages
-{
-    public class IndexModel : PageModel
     {
-        public class PrivacyModel : PageModel
+        public class IndexModel : PageModel
         {
-            private const int DEFAULT_TURN = 1; // Domyœlna wartoœæ dla Turn
-            private const int MAX_TURN = 20;   // Opcjonalnie: maksymalna liczba tur
-
-            public int Turn { get; private set; }
-
-            public void OnGet()
+            public class PrivacyModel : PageModel
             {
-                Turn = HttpContext.Session.GetInt32("Turn") ?? DEFAULT_TURN;
-            }
+                private const int DEFAULT_TURN = 1; // Domyœlna wartoœæ dla Turn
+                private const int MAX_TURN = 20;   // Opcjonalnie: maksymalna liczba tur
 
-            public void OnPost()
-            {
-                Turn = HttpContext.Session.GetInt32("Turn") ?? DEFAULT_TURN;
+                public int Turn { get; private set; }
 
-                Turn++;
-
-                if (Turn > MAX_TURN)
+                public void OnGet()
                 {
-                    Turn = MAX_TURN;
+                    Turn = HttpContext.Session.GetInt32("Turn") ?? DEFAULT_TURN;
                 }
 
-                HttpContext.Session.SetInt32("Turn", Turn);
-            }
-        }
+                public void OnPost()
+                {
+                    Turn = HttpContext.Session.GetInt32("Turn") ?? DEFAULT_TURN;
 
+                    Turn++;
+
+                    if (Turn > MAX_TURN)
+                    {
+                        Turn = MAX_TURN;
+                    }
+
+                    HttpContext.Session.SetInt32("Turn", Turn);
+                }
+            }
+
+        }
     }
-}
+
+

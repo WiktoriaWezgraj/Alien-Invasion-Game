@@ -1,11 +1,30 @@
 ﻿@page
 @model PrivacyModel
+
 <h1>Alien's Attack! Tura: @Model.Turn</h1>
+<h1>Info: @Model.Info</h1>
+
 <form asp-page="/Privacy" method="post">
-    <button class="turn-button" name="turnchange" value="prev">Poprzednia tura</button>
-    <button class="turn-button" name="turnchange" value="next">Kolejna tura</button>
+    <input type="hidden" id="moveDirection" name="moveDirection" value="" />
+
+    <div>
+        <button type="submit" name="turnchange" value="next" onclick="document.getElementById('moveDirection').value='up';">↑</button>
+    </div>
+    <div>
+        <button type="submit" name="turnchange" value="next" onclick="document.getElementById('moveDirection').value='left';">←</button>
+        <button type="submit" name="turnchange" value="next" onclick="document.getElementById('moveDirection').value='right';">→</button>
+    </div>
+    <div>
+        <button type="submit" name="turnchange" value="next" onclick="document.getElementById('moveDirection').value='down';">↓</button>
+    </div>
 </form>
+
 <div class="grid-container">
     @Html.Raw(Model.GridHTML)
 </div>
-<p>@Model.Info</p>
+
+<form asp-page="/Privacy" method="post">
+    <button type="submit" name="turnchange" value="prev">Poprzednia tura</button>
+    
+</form>
+

@@ -12,7 +12,7 @@ public class Ufo : Creature
         init => _rage = Validator.Limiter(value, 0, 10);
     }
 
-    public override string Info => $"{Name} [{Level}][{Rage}]";
+    public override string Info => $"{Name} [{Level}]";
 
     public override char Symbol => 'U';
 
@@ -37,7 +37,7 @@ public class Ufo : Creature
             huntCount = 0;
         }
     }
-    public override string Greeting() => $"Hi, I'm {Name}, my level is {Level}, my rage is {Rage}.";
+    public override string Greeting() => $"Hi, I'm {Name}.";
 }
 
     

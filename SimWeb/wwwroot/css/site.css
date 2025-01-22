@@ -125,3 +125,17 @@ label {
 h1 {
     text-shadow: 0 0 10px #00ffff, 0 0 20px #00e0e0;
 }
+
+.intro-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-content {
+    max-width: 60%;
+}
+
+.intro-image {
+    max-width: 30%;
+}

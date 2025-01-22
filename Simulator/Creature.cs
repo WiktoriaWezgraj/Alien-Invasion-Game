@@ -8,6 +8,7 @@ public abstract class Creature : IMappable
     public Point Position { get; private set; }
     private string _name = "Creature";
     private int _level = 1;
+    public bool IsMoving { get; private set; }
 
     public string Name
     {
@@ -70,6 +71,7 @@ public abstract class Creature : IMappable
             Map.Move(this, Position, nextPosition);
             Position = nextPosition;
         }
+        IsMoving = true;
 
         Console.WriteLine($"Moved {direction.ToString().ToLower()} to {Position}.");
     }
